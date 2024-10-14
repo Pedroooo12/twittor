@@ -32,13 +32,23 @@ const APP_SHELL_INMUTABLE = [
 
 self.addEventListener('install', e => {
     const staticCache = caches.open(STATIC_CACHE_NAME)
-    .then(cache => cache.addAll(APP_SHELL))
-
+      .then(cache => {
+        return cache.addAll(APP_SHELL)
+          .catch(error => {
+            console.error(`Error caching static resources: ${error}`);
+          });
+      });
+  
     const inmutableCache = caches.open(INMUTABLE_CACHE_NAME)
-    .then(cache => cache.addAll(APP_SHELL_INMUTABLE))
-
+      .then(cache => {
+        return cache.addAll(APP_SHELL_INMUTABLE)
+          .catch(error => {
+            console.error(`Error caching immutable resources: ${error}`);
+          });
+      });
+  
     e.waitUntil(Promise.all([staticCache, inmutableCache]));
-});
+  });
 
 self.addEventListener('activate', e => {
     const respuesta = caches.keys().then( keys => {
