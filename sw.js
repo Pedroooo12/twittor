@@ -7,7 +7,7 @@ const INMUTABLE_CACHE_NAME = 'inmutable-v1';
 
 //cosas que son parte de la web y hemos creado nosotros
 const APP_SHELL = [
-    '/',
+    //'/',
     'index.html',
     'css/style.css',
     'img/favicon.ico',
