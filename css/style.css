@@ -11,6 +11,17 @@
     font-size: 16px;
     background-color: #dde1e2; 
     width: 100%;
+
+    /*No permitir refresh en Android*/
+    overscroll-behavior-y: contain;
+    /*No hacer selecciones*/
+    -webkit-user-select: none;
+    user-select: none;
+    /*Eliminar resaltado de color cuando se toca un elemento*/
+    -webkit-tap-highlight-color: transparent;
+    /*Elimina el popup que se muestra cuando se mantiene presionado un elemento*/
+    -webkit-touch-callout: none;
+ 
 }
 
 /* Personalizados */
